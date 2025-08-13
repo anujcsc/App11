@@ -36,7 +36,7 @@ jobs:
         NETLIFY_SITE_ID: ebba7672-c6dd-4f87-a62e-4b68ef73158a
       with:
         # Publish directory
-        publish-dir: './App11/publish'
+        publish-dir: './App11/publish/wwwroot'
         deploy-message: "Deploy from GitHub Actions"
         enable-pull-request-comment: false
         enable-commit-comment: true
