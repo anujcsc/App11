@@ -31,10 +31,12 @@ jobs:
       working-directory: App11/App11.Browser
     - name: Netlify Deploy
       uses: nwtgck/actions-netlify@v3.0.0
+      env:
+        NETLIFY_AUTH_TOKEN: nfp_VpQcro7xEKxUbhQQqwKMRWwDY57r7RnZ59ce
+        NETLIFY_SITE_ID: ebba7672-c6dd-4f87-a62e-4b68ef73158a
       with:
         # Publish directory
         publish-dir: './App11/publish'
-        github-token: ${{ secrets.GITHUB_TOKEN }}
         deploy-message: "Deploy from GitHub Actions"
         enable-pull-request-comment: false
         enable-commit-comment: true
