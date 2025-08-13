@@ -27,7 +27,7 @@ jobs:
       run: dotnet restore
       working-directory: App11/App11.Browser
     - name: Build
-      run: dotnet publish --no-restore
+      run: dotnet publish --no-restore -o publish/
       working-directory: App11/App11.Browser
     - name: Netlify Deploy
       uses: nwtgck/actions-netlify@v3.0.0
