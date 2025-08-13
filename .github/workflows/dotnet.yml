@@ -1,0 +1,41 @@
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: .NET
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 9.0.x
+    - name: Workload install
+      run: dotnet workload restore
+      working-directory: App11/App11.Browser
+    - name: Restore dependencies
+      run: dotnet restore
+      working-directory: App11/App11.Browser
+    - name: Build
+      run: dotnet publish --no-restore
+      working-directory: App11/App11.Browser
+    - name: Netlify Deploy
+      uses: nwtgck/actions-netlify@v3.0.0
+      with:
+        # Publish directory
+        publish-dir: './App11/publish'
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        deploy-message: "Deploy from GitHub Actions"
+        enable-pull-request-comment: false
+        enable-commit-comment: true
+        overwrites-pull-request-comment: true
