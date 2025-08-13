@@ -1,6 +1,6 @@
 # example netlify.toml
 [build]
-  command = "dotnet publish"
+  command = "BuildProject.bat"
   functions = "netlify/functions"
   publish = "App11/App11.Browser"
 
